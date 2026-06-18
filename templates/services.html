@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block title %}Послуги — Barkat{% endblock %}
+{% block content %}
+
+<section class="page-hero">
+  <div class="container">
+    <span class="section-eyebrow">Що ми ремонтуємо</span>
+    <h1>Всі послуги</h1>
+    <p>Повний спектр ремонту цифрової та побутової техніки</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="services-grid services-grid--big">
+      {% for s in services %}
+      <div class="service-card service-card--big">
+        <div class="service-icon">{{ s.icon }}</div>
+        <h3>{{ s.name }}</h3>
+        <p>{{ s.desc }}</p>
+        <div class="service-meta">
+          <span class="price">{{ s.price }}</span>
+          <span class="time-badge">{{ s.time }}</span>
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="openModal()">Замовити ремонт</button>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section price-table">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Прайс-лист</span>
+      <h2>Популярні ремонти та ціни</h2>
+    </div>
+    <div class="table-wrap">
+      <table class="ptable">
+        <thead>
+          <tr>
+            <th>Послуга</th>
+            <th>Вартість</th>
+            <th>Термін</th>
+            <th>Гарантія</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Заміна екрану (смартфон)</td><td>від 599 грн</td><td>1–2 год</td><td>6 міс</td></tr>
+          <tr><td>Заміна батареї (смартфон)</td><td>від 299 грн</td><td>30–60 хв</td><td>6 міс</td></tr>
+          <tr><td>Ремонт після падіння у воду</td><td>від 799 грн</td><td>1–2 дні</td><td>3 міс</td></tr>
+          <tr><td>Заміна клавіатури (ноутбук)</td><td>від 499 грн</td><td>1–3 год</td><td>6 міс</td></tr>
+          <tr><td>Чищення від пилу (ноутбук)</td><td>від 399 грн</td><td>2–3 год</td><td>3 міс</td></tr>
+          <tr><td>Заміна матриці (ноутбук)</td><td>від 1 499 грн</td><td>1–2 дні</td><td>6 міс</td></tr>
+          <tr><td>Ремонт блоку живлення (монітор)</td><td>від 599 грн</td><td>1–3 дні</td><td>6 міс</td></tr>
+          <tr><td>Ремонт приводу (PS4/PS5)</td><td>від 649 грн</td><td>1–2 дні</td><td>6 міс</td></tr>
+          <tr><td>Заміна скла (смарт-годинник)</td><td>від 349 грн</td><td>1–2 год</td><td>3 міс</td></tr>
+          <tr><td>Чищення матриці (фотоапарат)</td><td>від 599 грн</td><td>2–3 дні</td><td>3 міс</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">* Точна вартість визначається після безкоштовної діагностики. Ціна на запчастини не включена.</p>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="container">
+    <h2>Не знайшли свою послугу?</h2>
+    <p>Зателефонуйте — відповімо на всі питання безкоштовно</p>
+    <div class="cta-btns">
+      <button class="btn btn-primary btn-lg" onclick="openModal()">Залишити заявку</button>
+      <a href="tel:+380671234567" class="btn btn-ghost btn-lg">📞 +38 (067) 123-45-67</a>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL (дублюємо для цієї сторінки) -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3>Залишити заявку</h3>
+    <p>Заповніть форму — зателефонуємо протягом 15 хвилин</p>
+    <div class="form-group">
+      <label>Ваше ім'я</label>
+      <input type="text" id="fname" placeholder="Іван Іваненко">
+    </div>
+    <div class="form-group">
+      <label>Телефон</label>
+      <input type="tel" id="fphone" placeholder="+38 (0__) ___-__-__">
+    </div>
+    <div class="form-group">
+      <label>Тип пристрою та проблема</label>
+      <textarea id="fdesc" rows="3" placeholder="Наприклад: iPhone 12 — не заряджається"></textarea>
+    </div>
+    <button class="btn btn-primary btn-full" id="submitBtn" onclick="submitRequest()">Надіслати заявку</button>
+    <div id="formMsg" class="form-msg"></div>
+  </div>
+</div>
+
+{% endblock %}

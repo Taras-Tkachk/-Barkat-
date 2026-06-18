@@ -1,0 +1,203 @@
+{% extends "base.html" %}
+{% block title %}Barkat — Сервісний центр ремонту техніки в Харкові{% endblock %}
+{% block content %}
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+  </div>
+  <div class="container hero-inner">
+    <div class="hero-badge">⚡ Харків · Швидко · Якісно</div>
+    <h1 class="hero-title">
+      Ремонт техніки<br>
+      <span class="gradient-text">будь-якої складності</span>
+    </h1>
+    <p class="hero-sub">Смартфони, ноутбуки, консолі, монітори — полагодимо все. Гарантія 6 місяців на кожну роботу.</p>
+    <div class="hero-actions">
+      <button class="btn btn-primary" onclick="openModal()">Залишити заявку</button>
+      <a href="/services" class="btn btn-ghost">Всі послуги →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num" data-target="4800">0</span>+
+        <span class="stat-label">ремонтів</span>
+      </div>
+      <div class="stat-div"></div>
+      <div class="stat">
+        <span class="stat-num" data-target="7">0</span>
+        <span class="stat-label">років досвіду</span>
+      </div>
+      <div class="stat-div"></div>
+      <div class="stat">
+        <span class="stat-num" data-target="98">0</span>%
+        <span class="stat-label">задоволених клієнтів</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section why-us">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Чому Barkat</span>
+      <h2>Ми ремонтуємо — не замінюємо</h2>
+      <p>Кожен пристрій отримує індивідуальний підхід</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🔬</div>
+        <h3>Безкоштовна діагностика</h3>
+        <p>Виявляємо всі несправності безплатно. Ціну повідомляємо до початку ремонту — ніяких прихованих витрат.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⏱</div>
+        <h3>Швидкий ремонт</h3>
+        <p>Більшість ремонтів — за 1–3 години. Складні випадки — до 3 днів. Терміновий виїзд по Харкову.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🛡</div>
+        <h3>Гарантія 6 місяців</h3>
+        <p>Офіційна письмова гарантія на всі види робіт та встановлені запчастини.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔧</div>
+        <h3>Оригінальні запчастини</h3>
+        <p>Використовуємо тільки якісні компоненти — оригінал або перевірені аналоги з гарантією.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES PREVIEW -->
+<section class="section services-preview">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Що ремонтуємо</span>
+      <h2>Популярні послуги</h2>
+    </div>
+    <div class="services-grid">
+      {% for s in services[:6] %}
+      <div class="service-card" style="animation-delay: {{ loop.index0 * 0.08 }}s">
+        <div class="service-icon">{{ s.icon }}</div>
+        <h3>{{ s.name }}</h3>
+        <p>{{ s.desc }}</p>
+        <div class="service-meta">
+          <span class="price">{{ s.price }}</span>
+          <span class="time-badge">{{ s.time }}</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="section-cta">
+      <a href="/services" class="btn btn-outline">Переглянути всі послуги</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section how-it-works">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Як це працює</span>
+      <h2>Від заявки до готового ремонту</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Подайте заявку</h3>
+          <p>Телефоном або через сайт — опишіть проблему і зручний час.</p>
+        </div>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Безкоштовна діагностика</h3>
+          <p>Майстер визначить несправність і назве точну ціну.</p>
+        </div>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Ремонт</h3>
+          <p>Швидко і якісно — з гарантією на кожен вид роботи.</p>
+        </div>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Забираєте техніку</h3>
+          <p>Отримуєте гарантійний талон і повністю справний пристрій.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section reviews">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Відгуки</span>
+      <h2>Клієнти про нас</h2>
+    </div>
+    <div class="reviews-grid">
+      {% for r in reviews %}
+      <div class="review-card">
+        <div class="review-stars">{{ "★" * r.stars }}{{ "☆" * (5 - r.stars) }}</div>
+        <p class="review-text">«{{ r.text }}»</p>
+        <div class="review-author">
+          <div class="avatar">{{ r.name[0] }}</div>
+          <div>
+            <strong>{{ r.name }}</strong>
+            <span>{{ r.device }}</span>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>Техніка зламалась? Ми полагодимо!</h2>
+    <p>Безкоштовна діагностика · Гарантія 6 місяців · Виїзд по Харкову</p>
+    <button class="btn btn-primary btn-lg" onclick="openModal()">Залишити заявку зараз</button>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3>Залишити заявку</h3>
+    <p>Заповніть форму — зателефонуємо протягом 15 хвилин</p>
+    <div class="form-group">
+      <label>Ваше ім'я</label>
+      <input type="text" id="fname" placeholder="Іван Іваненко">
+    </div>
+    <div class="form-group">
+      <label>Телефон</label>
+      <input type="tel" id="fphone" placeholder="+38 (0__) ___-__-__">
+    </div>
+    <div class="form-group">
+      <label>Тип пристрою та проблема</label>
+      <textarea id="fdesc" rows="3" placeholder="Наприклад: iPhone 12 — не заряджається"></textarea>
+    </div>
+    <button class="btn btn-primary btn-full" id="submitBtn" onclick="submitRequest()">Надіслати заявку</button>
+    <div id="formMsg" class="form-msg"></div>
+  </div>
+</div>
+
+{% endblock %}

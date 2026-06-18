@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block title %}Контакти — Barkat{% endblock %}
+{% block content %}
+
+<section class="page-hero">
+  <div class="container">
+    <span class="section-eyebrow">Де нас знайти</span>
+    <h1>Контакти</h1>
+    <p>Приходьте, телефонуйте або пишіть</p>
+  </div>
+</section>
+
+<section class="section contact-section">
+  <div class="container contact-grid">
+
+    <div class="contact-info">
+      <h2>Зв'яжіться з нами</h2>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <strong>Адреса</strong>
+            <span>вул. Сумська, 47, Харків, 61000</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📞</div>
+          <div>
+            <strong>Телефон</strong>
+            <a href="tel:+380671234567">+38 (067) 123-45-67</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">✉️</div>
+          <div>
+            <strong>Email</strong>
+            <a href="mailto:barkat@repair.ua">barkat@repair.ua</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">🕐</div>
+          <div>
+            <strong>Графік роботи</strong>
+            <span>Щодня: 9:00–20:00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="social-links">
+        <a href="#" class="social-btn">Telegram</a>
+        <a href="#" class="social-btn">Viber</a>
+        <a href="#" class="social-btn">Instagram</a>
+      </div>
+    </div>
+
+    <div class="contact-form-block">
+      <h2>Написати нам</h2>
+      <div class="form-group">
+        <label>Ваше ім'я</label>
+        <input type="text" id="cname" placeholder="Іван Іваненко">
+      </div>
+      <div class="form-group">
+        <label>Телефон або Email</label>
+        <input type="text" id="ccontact" placeholder="+38 або email">
+      </div>
+      <div class="form-group">
+        <label>Ваше повідомлення</label>
+        <textarea id="cmsg" rows="4" placeholder="Опишіть проблему або питання..."></textarea>
+      </div>
+      <button class="btn btn-primary btn-full" onclick="submitContact()">Надіслати</button>
+      <div id="contactMsg" class="form-msg"></div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section map-section">
+  <div class="container">
+    <div class="map-placeholder">
+      <div class="map-label">📍 вул. Сумська, 47 — Barkat Сервісний Центр</div>
+      <div class="map-sublabel">Зручне розташування в центрі Харкова · Є паркування</div>
+      <a href="https://maps.google.com/?q=Харків+вул+Сумська+47" target="_blank" class="btn btn-outline">Відкрити в Google Maps</a>
+    </div>
+  </div>
+</section>
+
+<script>
+function submitContact() {
+  const name = document.getElementById('cname').value.trim();
+  const contact = document.getElementById('ccontact').value.trim();
+  const msg = document.getElementById('cmsg').value.trim();
+  const msgEl = document.getElementById('contactMsg');
+
+  if (!name || !contact) {
+    msgEl.textContent = 'Будь ласка, заповніть ім\'я та контакт.';
+    msgEl.className = 'form-msg form-msg--error';
+    return;
+  }
+
+  msgEl.textContent = '✅ Повідомлення надіслано! Відповімо найближчим часом.';
+  msgEl.className = 'form-msg form-msg--success';
+  document.getElementById('cname').value = '';
+  document.getElementById('ccontact').value = '';
+  document.getElementById('cmsg').value = '';
+}
+</script>
+
+{% endblock %}
