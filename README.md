@@ -14,3 +14,4 @@
 * CSS3
 * JavaScript
 * Flask
+* Python
